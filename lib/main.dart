@@ -2,6 +2,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:poject/second%20page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context)=>MyHomePage(),
+
+      },
     );
   }
 }
@@ -57,11 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
         ),
         Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
       Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
         children: [ Row(
           children: <Widget>[
             Icon(
@@ -163,11 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [ Visibility(
-                    child: Text(
-                      "Your BMI is ${bmi.toStringAsFixed(2)}",
-                  style: TextStyle(fontSize: 30,color: Colors.white,  ),
-                ), visible: flag),
+                children: [
                   Container(
                     color: Color.fromARGB(255, 9, 91, 28),
                     height: 50,
@@ -176,7 +176,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: ButtonStyle(
                           backgroundColor:
                           MaterialStateProperty.all(Colors.green)),
-                      onPressed: (() { setState(() { flag=true;
+                      onPressed: (() {
+                        Navigator.pushNamed(context,'/second');
+
+                        setState(() { flag=true;
                       bmi = (weight * 10000) / (height * height);
 
                       });
@@ -191,57 +194,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ))
         ],
       ),
-        Column( mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children:[
-          Container(
-            height: 62.5,
-            width: 150,
-            color: Colors.yellow,
-            child: Text( textAlign: TextAlign.center,
-              "Under Weight\n<18.5"
-            )
-          ),
-          Container(
-            height: 62.5,
-            width: 150,
-            color: Colors.green,
-              child: Text( textAlign: TextAlign.center,
-                  "Normal Weight\n18.5-24.9"
-              )
-          ),
-          Container(
-            height: 62.5,
-            width: 150,
-            color: Colors.lightBlue,
-              child: Text( textAlign: TextAlign.center,
-                  "Over Weight\n25.0-29.9"
-              )
-          ),
-          Container(
-            height: 62.5,
-            width: 150,
-            color: Colors.orange,
-              child: Text( textAlign: TextAlign.center,
-                  "Obese Type I\n30.0-34.9"
-              )
-          ),
-          Container(
-              height: 62.5,
-              width: 150,
-              color: Colors.deepOrange,
-              child: Text( textAlign: TextAlign.center,
-                  "Obese Type II\n35.0-39.0"
-              )
-          ) ,Container(
-              height: 62.5,
-              width: 150,
-              color: Colors.red,
-              child: Text( textAlign: TextAlign.center,
-                  "Obese Type III\n40<"
-              )
-          )]
-        ),
     ]),]),);
   }
 }
