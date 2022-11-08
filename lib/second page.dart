@@ -11,12 +11,11 @@ class SecondPage extends StatefulWidget {
 class _SecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( backgroundColor: Colors.black,
       appBar: AppBar(
      title: Text("Result"),
       ),
-      body: Column( crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Row( mainAxisAlignment: MainAxisAlignment.center,children:[Column(
         children:  [
 
                 Container(
@@ -125,15 +124,17 @@ class _SecondPageState extends State<SecondPage> {
                 return Icon(
                   Icons.sentiment_very_satisfied,
                   color: Colors.green,
+
                 );
+              default: return Container();
             } ;
-        return Container();  },
+          },
           onRatingUpdate: (rating) {
             print(rating);
           })
            ],
       )
-
+      ])
     );
   }
 }
