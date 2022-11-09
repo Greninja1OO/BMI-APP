@@ -45,16 +45,24 @@ class _SecondPageState extends State<SecondPage> {
                     GaugeRange(startValue: 30, endValue: 35, color:Colors.orange),
                     GaugeRange(startValue: 35,endValue: 40,color: Colors.deepOrange),
                     GaugeRange(startValue: 40, endValue: 55, color:Colors.red),
+
+
+
                   ],
                   pointers: <GaugePointer>[
                     NeedlePointer(value: widget.bmi)],
                   annotations: <GaugeAnnotation>[
                     GaugeAnnotation(widget: Container(alignment: Alignment.center,child:
-                    Text('\n${widget.bmi.toStringAsFixed(2)}\nYou are\n$str',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),textAlign: TextAlign.center,)),
+                    Text('\n${widget.bmi.toStringAsFixed(2)}\nYou are \n$str',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),textAlign: TextAlign.center,)),
                         angle: 90, positionFactor: 0.5
                     )]
               )])
         ])),
+
+
+
+
+
           Container(
             color: Color.fromARGB(255, 9, 91, 28),
             height: 50,
@@ -74,7 +82,7 @@ class _SecondPageState extends State<SecondPage> {
               ),
             ),
           ),
-        RatingBar.builder(
+        RatingBar.builder(  unratedColor: Colors.white,
           initialRating: 0,
           itemCount: 5,
           itemBuilder: (context, index){
@@ -105,8 +113,9 @@ class _SecondPageState extends State<SecondPage> {
                   color: Colors.green,
 
                 );
-              default: return Container();
-            } ;
+              default:
+                return Container();
+            };
           },
           onRatingUpdate: (rating) {
             print(rating);
