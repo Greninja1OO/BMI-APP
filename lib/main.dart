@@ -40,13 +40,13 @@ class _MyHomePageState extends State<MyHomePage> {
   String w="kg";
   @override
   Widget build(BuildContext context) {
-    bmi = (weight*10000) / (height*height);
+
     return Scaffold( backgroundColor: Colors.black,
       appBar: AppBar(
         centerTitle: true,
         title: Text("Health Check"),
       ),
-      body: Column( crossAxisAlignment: CrossAxisAlignment.center,
+      body: Column( crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
       children: [
         Text(
@@ -96,14 +96,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
             child: Column(
 
-              children: [ Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,children:
+              children: [ Row( mainAxisAlignment: MainAxisAlignment.center,children:
 [                Text(
                   "Height\n${height.toStringAsFixed(2)} $h",
                   textScaleFactor: 2,
                   textAlign: TextAlign.start,
                   style: TextStyle(color: Colors.white),
 
-                ),ElevatedButton(
+                ),Text("  "),ElevatedButton(
   style: ButtonStyle(
       backgroundColor:
       MaterialStateProperty.all(Colors.green)),
@@ -202,7 +202,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),Container(
             height: 10
           ),
-          Container(decoration: BoxDecoration(color: Color(0xff63666A),
+          Container(decoration: BoxDecoration(color: Colors.black,
               borderRadius: const BorderRadius.all(const Radius.circular(80))
           ),
 
@@ -219,7 +219,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor:
-                          MaterialStateProperty.all(Colors.green)),
+                          MaterialStateProperty.all(Color(0xff63666A))),
                       onPressed: (() {
                         Navigator.push(context,
                         MaterialPageRoute(builder: (context)=>SecondPage(bmi:bmi)));
